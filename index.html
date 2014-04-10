@@ -43,8 +43,16 @@
        
 //        ////////
           function reverseText(text) {
-        
-      }
+            if(text === null) {
+               return null;
+            }
+            var reversed = '';
+            for(var index = text.length -1; index >= 0; index--) 
+              {
+              reversed+= text[index];
+              }
+            return reversed;
+          }
         createExample('Reverse Text', {
           description: 'Create a function that reverses the characters in \
             a string',
@@ -66,11 +74,37 @@
           ]
         });
 
+        function giveChange(money) {
+            var denominations = [
+              {name: 'fives', value: 500},
+              {name: 'ones', value: 100},
+              {name: 'quarters', value: 25},
+              {name: 'dimes', value: 10},
+              {name: 'nickles', value: 5},
+              {name: 'pennies', value: 1}
+            ]
+            
+          // input number
+            // research modulus operator "%" for remainder
+            // e.g. (723%500) will equal 223, etc 
+                //loop through denominations 
+                // set remainder = value at first
+                //reset remainder after each 
+                // remainder > denomination
+                //track how much of each 
+                // if remainder < that denomination, skip to next denom (else)
+                
+          //  multiply by 100 or split at decimal...
+                // 723...
+                
+          // output object (array of above variables with values)
+        }
+        
         createExample('Tender Change', {
           description: 'Write a function that given a dollar amount returns \
             the change in bills and coins. For instance, given \
             <code>7.23</code> it should return: \
-            <pre>{ fives: 1, ones: 2, dimes: 2, pennies: 3 }</pre>',
+            <pre>{ fives: 1, ones: 2, dimes: 2, pennies: 5 }</pre>',
           implementation: null,
           validation: [
             {
@@ -80,6 +114,8 @@
           ]
         });
 
+          
+          // 
         createExample('The Pluralizer', {
           description: 'Write a function that takes two arguments, a noun \
             and a number, and returns the number and the noun in pluralized \
@@ -97,6 +133,14 @@
           ]
         });
 
+          
+          // sorted array of objects will be the output below
+          // look up the "string.sort(callbac(a,b)" function to accomplish this.
+        
+        //  use string.split to separate:
+        // '1,2,3'.split(',')  creates an array
+        // parseInt('1') returns 1 
+          
         var movieList = [
           'The Shawshank Redemption,1994,1043071',
           'The Godfather,1972,732416',
