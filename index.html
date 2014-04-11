@@ -75,41 +75,110 @@
         });
 
         function giveChange(money) {
-            var denominations = [
-              {name: 'fives', value: 500},
-              {name: 'ones', value: 100},
-              {name: 'quarters', value: 25},
-              {name: 'dimes', value: 10},
-              {name: 'nickles', value: 5},
-              {name: 'pennies', value: 1}
+            var wallet = [
+              {name: 'fives', value: 0},
+              {name: 'ones', value:0},
+              {name: 'quarters', value:0},
+              {name: 'dimes', value:0},
+              {name: 'nickles', value:0},
+              {name: 'pennies', value:0}
             ]
-            
-          // input number
-            // research modulus operator "%" for remainder
-            // e.g. (723%500) will equal 223, etc 
-                //loop through denominations 
-                // set remainder = value at first
-                //reset remainder after each 
-                // remainder > denomination
-                //track how much of each 
-                // if remainder < that denomination, skip to next denom (else)
-                
-          //  multiply by 100 or split at decimal...
-                // 723...
-                
-          // output object (array of above variables with values)
+            var bills = 0;
+            money = (money * 100);
+//            console.log(money);
+            var change = 0;
+           while(money > 1) 
+             {
+//               console.log(money);
+                if (money > 500)
+                {
+                  change = money%500;
+                  bills = money - change;
+                  wallet[0]['value'] = bills / 500;
+//                  console.log(wallet[0]['value']);
+//                  console.log(change);
+                  money = change;
+//                  console.log("fives =" + wallet[0]);
+                } 
+ 
+              else if (money > 100)
+                {
+//                  console.log(money);
+                  change = money%100;
+                  bills = money - change;
+                  wallet[1]['value'] = bills / 100;
+//                  console.log(wallet[1]);
+                  money = change;
+//                  console.log("ones =" + wallet[1]);
+                }
+               else if (money > 25)
+                {
+                  change = money%25;
+                  bills = money - change;
+                  wallet[2]['value'] = bills / 25;
+//                  console.log(wallet[2]);
+                  money = change;
+//                  console.log("quarters =" + wallet[2]);
+                }
+                else if (money > 10)
+                {
+                  change = money%10;
+                  bills = money - change;
+                  wallet[3]['value'] = bills / 10;
+//                  console.log(wallet[3]);
+                  money = change;
+//                  console.log("dimes =" + wallet[3]);
+                }
+                else if (money > 5)
+                {
+                  change = money%5;
+                  bills = money - change;
+                  wallet[4]['value'] = bills / 5;
+//                  console.log(wallet[4]);
+                  money = change;
+//                  console.log("nickles =" + wallet[4]);
+                }
+                else
+                {
+                  wallet[5]['value'] = money;
+//                  console.log("pennies =" + wallet[5]);
+                  money = 0;
+                }
+              
+             }
+
+//    console.log(wallet[0]['name']+": "+ wallet[0]['value']+", ", wallet[1]['name']+": "+ wallet[1]['value']+", ", wallet[3]['name']+": "+ wallet[3]['value']+", ",  wallet[5]['name']+": "+ wallet[5]['value']);
+          
+          var wallet2 = '';
+          
+          for (i=0;i<wallet.length;i++)
+          {
+            console.log(wallet[i]['value']);
+ //           if (wallet[i]['value'] != 0)
+//              {
+                wallet2[i]['name'] = wallet[i]['name'];
+                wallet2[i]['value'] = wallet[i]['value'];
+                console.log(wallet2[i]['value']);
+//              }
+          }
+
+          console.log(wallet2);
+         
+
+          
+    // output object (array of above variables with values)
         }
         
         createExample('Tender Change', {
           description: 'Write a function that given a dollar amount returns \
             the change in bills and coins. For instance, given \
             <code>7.23</code> it should return: \
-            <pre>{ fives: 1, ones: 2, dimes: 2, pennies: 5 }</pre>',
-          implementation: null,
+            <pre>{ fives: 1, ones: 2, dimes: 2, pennies: 3 }</pre>',
+          implementation: giveChange,
           validation: [
             {
               input: 7.23,
-              output: { fives: 1, ones: 2, dimes: 2, pennies: 5 }
+              output: { fives: 1, ones: 2, dimes: 2, pennies: 3 }
             }
           ]
         });
